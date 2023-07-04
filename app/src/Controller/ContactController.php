@@ -23,7 +23,6 @@ class ContactController extends AbstractController
             ->add('email', TextType::class, array('label'=> 'email','attr' => array('class' => 'form-control', 'style' => 'margin-bottom:15px')))
             ->add('subject', TextType::class, array('label'=> 'subject','attr' => array('class' => 'form-control', 'style' => 'margin-bottom:15px')))
             ->add('message', TextareaType::class, array('label'=> 'message','attr' => array('class' => 'form-control')))
-            ->add('Save', SubmitType::class, array('label'=> 'Send', 'attr' => array('class' => 'btn btn-primary', 'style' => 'margin-top:15px')))
             ->getForm();
 
         $form->handleRequest($request);
@@ -32,7 +31,7 @@ class ContactController extends AbstractController
             $contact = $form->getData();
             $contactMessageRepository->save($contact, true);
 
-            $this->addFlash('success', 'Your message has been sent succesfully');
+            $this->addFlash('success', 'Your message has been sent successfully.');
 
             return $this->redirectToRoute('app_contact');
         }
